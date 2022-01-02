@@ -205,8 +205,10 @@
 		<img class="swing" src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Swing_nadneda.png" style="height: 60vh; position:absolute; z-index:-1;">
 		<div class="center" style="padding:1vw">
 		<div class="" v-if="projectView" style="background: rgba(60, 60, 60, 0.4); padding:10vw;">
-			<div class="grid">
+			<div class="stack">
+
 				<img style="width: 50vh;" :src="'images/'+selectedProject.image+'@2x.jpg'">
+				<br>
 				<div>
 					<h1>{{selectedProject.name}}</h1>
 					<h2>{{selectedProject.description}}</h2>
@@ -221,7 +223,7 @@
 				<img class="project-img" :src="'images/'+project.image+'@2x.jpg'">
 			</div>
 		</div>
-			<br>
+			<!-- <br> -->
 		<div class=" mini-container">
 			<img class="mini-img center" src="images/photobooth 1@2x.jpg">
 			<img  class="mini-img center"  src="images/photobooth 2@2x.png">
