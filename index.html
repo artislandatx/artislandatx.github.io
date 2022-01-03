@@ -69,10 +69,6 @@
 					-webkit-animation-name: swing;
 					animation-name: swing;
 					animation-iteration-count: infinite;
-
-					/* background-image: url(/css/images/logo.png); */
-					/* background-repeat: no-repeat; */
-					/* background-position: left top; */
 					-webkit-animation-duration: 10s;
 					animation-duration: 10s;
 					-webkit-animation-fill-mode: both;
@@ -98,11 +94,11 @@
 
 		.mini-container {
 			display: grid;
-			/* grid-template-columns: repeat(3, 30%); */
+			grid-template-columns: repeat(2, 50%);
 			justify-items: center;
 			/* grid-gap: 10%; */
 			width: 90vw;
-			grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+			/* grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); */
 
 			/* height: 100vh; */
 		}
@@ -137,15 +133,15 @@
 		  border: 1px solid black;
 		  cursor: pointer;
 		  position: relative;
-		  background-color: rgba(0, 0, 0, 0);
+		  background-color: rgba(39, 180, 137, 1);
 		  user-select: none;
 		  -webkit-user-select: none;
 		  touch-action: manipulation;
+
 		}
 
 		.button-52:after {
 		  content: "";
-		  background-color: #ffe54c;
 		  width: 100%;
 		  z-index: -1;
 		  position: absolute;
@@ -153,6 +149,8 @@
 		  top: 7px;
 		  left: 7px;
 		  transition: 0.2s;
+			background-color: #FCF4A3;
+
 		}
 
 		.button-52:hover:after {
@@ -204,7 +202,7 @@
 		</div>
 		<img class="swing" src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Swing_nadneda.png" style="height: 60vh; position:absolute; z-index:-1;">
 		<div class="center" style="padding:1vw">
-		<div class="" v-if="projectView" style="background: rgba(60, 60, 60, 0.4); padding:10vw;">
+		<div class="" v-if="projectView" style="background: rgba(60, 60, 60, 0.4); padding:7vw;">
 			<div class="stack">
 
 				<img style="width: 50vh;" :src="'images/'+selectedProject.image+'@2x.jpg'">
