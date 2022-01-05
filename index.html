@@ -137,6 +137,7 @@
 		  user-select: none;
 		  -webkit-user-select: none;
 		  touch-action: manipulation;
+			margin:5px
 
 		}
 
@@ -205,12 +206,16 @@
 		<div class="" v-if="projectView" style="background: rgba(60, 60, 60, 0.4); padding:7vw;">
 			<div class="stack">
 
-				<img style="width: 50vh;" :src="'images/'+selectedProject.image+'@2x.jpg'">
+				<img style="width: 50vh;" :src="'images/'+selectedProject.image+'.png'">
 				<br>
 				<div>
 					<h1>{{selectedProject.name}}</h1>
 					<h2>{{selectedProject.description}}</h2>
-					<button class="button-52" @click="projectView = false">Return</button>
+					<div class="stack">
+						<button class="button-52" @click="openProjectPage(selectedProject.pageurl)">See More</button>
+						<br>
+						<button class="button-52" style="background-color:#9E7BB5;" @click="projectView = false">Return</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -218,7 +223,7 @@
 			<div class="container">
 			<div @click="showProject(project)" v-for="project in projects1" class="center stack project">
 				<!-- <h2 style="margin-bottom:4vh;" >{{project.name}}</h2> -->
-				<img class="project-img" :src="'images/'+project.image+'@2x.jpg'">
+				<img class="project-img" :src="'images/'+project.image+'.png'">
 			</div>
 		</div>
 			<!-- <br> -->
@@ -232,7 +237,7 @@
 
 			<div @click="showProject(project)" v-for="project in projects2" class="center stack project">
 				<!-- <h2 style="margin-bottom:4vh;" >{{project.name}}</h2> -->
-				<img class="project-img" :src="'images/'+project.image+'@2x.jpg'">
+				<img class="project-img" :src="'images/'+project.image+'.png'">
 			</div>
 		</div>
 		</div>
@@ -247,11 +252,11 @@
 				projectView: false,
 				selectedProject: {},
 				projects1: [
-					{name: "Totem", top:"30vh", image: "twerk",
+					{name: "Totem", top:"30vh", image: "twerk", pageurl: "https://www.artislandatx.com/totem",
 						description: "Our team spent a long 2-night hackathon conceiving and executing on this amazing CNC'd LED totem, which house the hardware for another original project called The Twerkulator. The idea was to create something that looked amazing in day and night, and was fun to hold and pass around. The movement would then correspond with the visuals on screen via a reactive software program. The finished product debuted at our BESTOW event to lots of dancing and fanfare! Huge thanks for Elli at the Fail Factory for making our team of designers, coders, and makers' dreams come true."},
-					{name: "Offering Tower", top:"20vh", image: "tower",
+					{name: "Offering Tower", top:"20vh", image: "tower", pageurl: "https://www.artislandatx.com/copy-of-enter-the-ember-entryway",
 						description: "This art piece was accompanied by small, candle-lit tables holding sacred herbs, and an invitation to place them inside of the winding shelves along the outside of the tower with an intention."},
-					{name: "NTR (Nethersphere Thought Receiver)", top:"10vh", image: "NTP",
+					{name: "NTR (Nethersphere Thought Receiver)", top:"10vh", image: "NTP", pageurl: "https://www.artislandatx.com/copy-of-enter-the-ember-entryway-1",
 						description: "A pandemic events challenge: create touch-free experiences. What resulted was a microcosm of interaction, expression and engagement, from 6 feet away."},
 					// {name: "afterglow glam-up lounge", top:"30vh", image: "ag",
 					// 	description: "We were commissioned by the Austin-based brand afterglow to create a sexy lounge and 'glam up' bar where we would reward attendees for interacting with the product with free face jewel service."},
@@ -267,11 +272,11 @@
 					// 	description: "This art piece was accompanied by small, candle-lit tables holding sacred herbs, and an invitation to place them inside of the winding shelves along the outside of the tower with an intention."},
 					// {name: "NTR (Nethersphere Thought Receiver)", top:"10vh", image: "NTP",
 					// 	description: "A pandemic events challenge: create touch-free experiences. What resulted was a microcosm of interaction, expression and engagement, from 6 feet away."},
-					{name: "afterglow glam-up lounge", top:"30vh", image: "ag",
+					{name: "afterglow glam-up lounge", top:"30vh", image: "ag", pageurl: "https://www.artislandatx.com/copy-of-afterglow",
 						description: "We were commissioned by the Austin-based brand afterglow to create a sexy lounge and 'glam up' bar where we would reward attendees for interacting with the product with free face jewel service."},
-					{name: "Enter the Ember", top:"20vh", image: "enter",
+					{name: "Enter the Ember", top:"20vh", image: "enter", pageurl: "https://www.artislandatx.com/basic-01",
 						description: "Given the themes of the event: witches, fairies, and dragons, we created installations inviting the whimsy for 400+ attendees."},
-					{name: "Literati Learning Tree of Light", top:"10vh", image: "tree",
+					{name: "Literati Learning Tree of Light", top:"10vh", image: "tree", pageurl: "https://www.artislandatx.com/learningtree",
 						description: "A commission for an Austin business looking for an iconic installation to travel with, from design to execution to delivery."},
 				],
 	    },
@@ -279,7 +284,10 @@
 	      showProject: function (project) {
 	        this.projectView = true;
 					this.selectedProject = project;
-	      }
+	      },
+				openProjectPage: function (pageurl) {
+					window.open(pageurl);
+				}
 	    }
 	  })
 	</script>
