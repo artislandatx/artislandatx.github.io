@@ -1,5 +1,7 @@
 	<!DOCTYPE html>
 	<html>
+	<!-- allows mobile scaling -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		@keyframes changewidth {
 		  from {
@@ -133,7 +135,7 @@
 		  border: 1px solid black;
 		  cursor: pointer;
 		  position: relative;
-		  background-color: rgba(39, 180, 137, 1);
+		  /* background-color: rgba(39, 180, 137, 1); */
 		  user-select: none;
 		  -webkit-user-select: none;
 		  touch-action: manipulation;
@@ -208,13 +210,12 @@
 
 				<img style="width: 50vh;" :src="'images/'+selectedProject.image+'.png'">
 				<br>
-				<div>
+				<div style="max-width: 100ch;">
 					<h1>{{selectedProject.name}}</h1>
 					<h2>{{selectedProject.description}}</h2>
-					<div class="stack">
-						<button class="button-52" @click="openProjectPage(selectedProject.pageurl)">See More</button>
-						<br>
-						<button class="button-52" style="background-color:#9E7BB5;" @click="projectView = false">Return</button>
+					<div class="stack" style="display:flex; justify-content:space-between;">
+						<button class="button-52" style="background-color: rgba(39, 180, 137, 1);" @click="projectView = false">Return</button>
+						<button class="button-52" style="background-color: rgba(39, 180, 137, 1);" @click="openProjectPage(selectedProject.pageurl)">See More</button>
 					</div>
 				</div>
 			</div>
