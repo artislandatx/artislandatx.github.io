@@ -78,7 +78,7 @@
 			 }
 
 		body {
-		  background: url("images/backdrop@2x.jpg") no-repeat center center fixed;
+		  background: url("images/img_BG.png") no-repeat center center fixed;
 		  -webkit-background-size: cover;
 		  -moz-background-size: cover;
 		  -o-background-size: cover;
@@ -208,7 +208,7 @@
 		<div class="" v-if="projectView" style="background: rgba(60, 60, 60, 0.4); padding:7vw;">
 			<div class="stack">
 
-				<img style="width: 50vh;" :src="'images/'+selectedProject.image+'.png'">
+				<img style="width: 50vh;" :src="'images/backup/'+selectedProject.image+'.png'">
 				<br>
 				<div style="max-width: 100ch;">
 					<h1>{{selectedProject.name}}</h1>
@@ -224,13 +224,13 @@
 			<div class="container">
 			<div @click="showProject(project)" v-for="project in projects1" class="center stack project">
 				<!-- <h2 style="margin-bottom:4vh;" >{{project.name}}</h2> -->
-				<img class="project-img" :src="'images/'+project.image+'.png'">
+				<img class="project-img" :src="'images/backup/'+project.image+'.png'">
 			</div>
 		</div>
 			<!-- <br> -->
 		<div class=" mini-container">
-			<img class="mini-img center" src="images/photobooth 1@2x.jpg">
-			<img  class="mini-img center"  src="images/photobooth 2@2x.png">
+			<img class="mini-img center" src="images/backup/photobooth 1@2x.jpg">
+			<img  class="mini-img center"  src="images/backup/photobooth 2@2x.png">
 		</div>
 		<!-- <br> -->
 		<div class="container">
@@ -238,7 +238,7 @@
 
 			<div @click="showProject(project)" v-for="project in projects2" class="center stack project">
 				<!-- <h2 style="margin-bottom:4vh;" >{{project.name}}</h2> -->
-				<img class="project-img" :src="'images/'+project.image+'.png'">
+				<img class="project-img" :src="'images/backup/'+project.image+'.png'">
 			</div>
 		</div>
 		</div>

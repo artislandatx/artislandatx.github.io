@@ -43,18 +43,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   justify-items: center;
-  /* grid-gap: 10%; */
   width: 90vw;
-}
-
-.mini-container {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  justify-items: center;
-  /* grid-gap: 10%; */
-  width: 90vw;
-  /* grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); */
-  /* height: 100vh; */
 }
 
 .center {
@@ -67,54 +56,64 @@ body {
   align-items: center;
 }
 
+* {
+	font-family: Futura,sans-serif;
+	font-weight: 100;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: white;
-  font-family: Arial, sans-serif;
+
 }
 
 .header {
   background: black;
   color: white;
-  font-size: 30px;
+	display: flex;
+	justify-content:space-evenly;
+	flex-wrap: wrap;
+	padding: 1vh
 }
 
-.button-52 {
-  font-size: 16px;
-  font-weight: 200;
-  letter-spacing: 1px;
+/* Style socials */
+.social {
+	padding: 10px;
+/* font-size: 2rem; */
+  font-size: 15px;
+  width: 30px;
+	height: 18px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+	background: grey;
+	color: black;
+}
+
+/* shrinks an img down into a container */
+.shrunk-img {
+	min-width: 0;
+	max-width: 90%;
+	height: auto;
+}
+
+.ai-button {
+  font-size: 13px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
   padding: 13px 20px 13px;
   outline: 0;
-  border: 1px solid black;
+  border: 0px solid black;
   cursor: pointer;
   position: relative;
-  /* background-color: rgba(39, 180, 137, 1); */
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  margin: 5px
+  margin: 5px;
+	background-color: rgba(39, 180, 137, 1);
 }
 
-.button-52:after {
-  content: "";
-  width: 100%;
-  z-index: -1;
-  position: absolute;
-  height: 100%;
-  top: 7px;
-  left: 7px;
-  transition: 0.2s;
-  background-color: #0ff;
-}
-
-.button-52:hover:after {
-  top: 0px;
-  left: 0px;
-}
-
-@media (min-width: 768px) {
-  .button-52 {
-    padding: 13px 50px 13px;
-  }
+.ai-button:hover {
+  background-color: rgba(39, 180, 137, .8);
 }
 
 .grid {
@@ -125,8 +124,18 @@ h1, h2, h3, h4, h5, h6 {
 @supports (width: min(250px, 100%)) {
   .grid, .container {
 		/* move to two columns on mobile instead of 1 (100% -> 50%) */
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 50%), 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(min(250px, 50%), 1fr)); */
+		grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+
   }
+}
+
+/* move to two columns but one if tiny on mobile instead of 1 (100% -> 50%) */
+@media screen and (max-width: 370px) {
+	/* move to single row with small screens */
+	/* .grid, .container {
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  } */
 }
 
 .popup {
@@ -152,45 +161,56 @@ h1, h2, h3, h4, h5, h6 {
   .popup {
     visibility: visible;
     position: relative;
+		margin-top: 0;
   }
 	/* used for offset cols in mobile view */
 	.top-margin {
-		margin-top:25vh;
+		/* margin-top:25vh; */
 	}
 }
 
-@media screen and (max-width: 370px) {
-	/* move to single row with small screens */
-	.grid, .container {
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-  }
-}
 
 
 </style>
 <title>Art Island ATX</title>
 <script src="https://unpkg.com/vue"></script>
+<!-- Add icon library -->
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css">
 
 <body>
 	<div id="app" class="">
-		<div class="header">
+		<div class="header" >
 			<a href="https://www.artislandatx.com">
-				<img style="height:5vh;" src="https://static.wixstatic.com/media/c1ccad_316d04c9fca9446da30aeb9e036afbe7~mv2.png/v1/fill/w_610,h_115,al_c,q_85,usm_0.66_1.00_0.01/artisland_logo_horizontal-white.webp">
+				<img style="height:7vh;" src="images/artisland_logo_horizontal-white.webp">
 			</a>
+			<div style="">
+				<!-- Add font awesome icons -->
+				<!-- <a href="https://www.instagram.com/artislandatx/" class="fa fa-instagram social fa-fw"></a>
+				<a href="https://tiktok.com/@artislandATX" class="fab fa-tiktok social fa-fw"></a>
+				<a href="https://soundcloud.com/artislandatxmusic" class="fa fa-soundcloud social fa-fw"></a>
+				<a href="https://www.facebook.com/ArtIslandAustinTexas" class="fa fa-facebook social fa-fw"></a>
+				<a href="https://www.youtube.com/channel/UCXy4kxF79NbVncV4oh7vK-A" class="fa fa-youtube social fa-fw"></a> -->
+
+			</div>
 		</div>
 		<div class="center" style="padding:1vw">
-			<div class="" v-if="projectView" style="background: rgba(60, 60, 60, 0.4); padding:7vw;">
-				<div class="stack" style="padding:1vw">
-					<!-- style: let image shrink below its max size on mobile view -->
-					<img :src="'icons/'+selectedProject.image+'.png'" style="min-width: 0; max-width: 90%; height: auto;">
-					<br>
-					<div style="max-width: 100ch;">
-						<h1>{{selectedProject.name}}</h1>
-						<h2>{{selectedProject.description}}</h2>
-						<div class="stack" style="display:flex; justify-content:space-between;">
-							<button class="button-52" style="background-color: rgba(39, 180, 137, 1);" @click="projectView = false">Return</button>
-							<button class="button-52" style="background-color: rgba(39, 180, 137, 1);" @click="openProjectPage(selectedProject.pageurl)">See More</button>
+			<div class="" v-if="projectView" style="background: rgba(60, 60, 60, 0.4); padding:7vw; padding-top:1vw;">
+				<div class="grid">
+					<div class="stack" style="padding:1vw">
+						<!-- style: let image shrink below its max size on mobile view -->
+						<img :src="'icons/'+selectedProject.image+'.png'" class="shrunk-img">
+						<br>
+						<div style="max-width: 100ch;">
+							<h1>{{selectedProject.name}}</h1>
+							<h2>{{selectedProject.description}}</h2>
+							<div class="stack" style="display:flex; justify-content:space-between;">
+								<button class="ai-button" @click="projectView = false">Return</button>
+								<button class="ai-button" @click="openProjectPage(selectedProject.pageurl)">Read More</button>
+							</div>
 						</div>
+					</div>
+					<div>
 					</div>
 				</div>
 			</div>
@@ -203,7 +223,8 @@ h1, h2, h3, h4, h5, h6 {
 						<div class="popup">
 							<h2 style="">{{project.name}}</h2>
 							<h4 style="">{{project.oneliner}}</h4>
-							<h5 style="font-style: italic; color:rgba(39, 180, 137, 1);">Click to learn more</h5>
+							<button class="ai-button">Learn More</button>
+							<!-- <h5 style="font-style: italic; color:rgba(39, 180, 137, 1);">Click to learn more</h5> -->
 						</div>
 					</div>
 				</div>
@@ -218,7 +239,7 @@ h1, h2, h3, h4, h5, h6 {
 				selectedProject: {},
 				allProjects: {
 					projects1: [
-						{name: "Photobooth", image: "mirror", pageurl: "https://www.artislandatx.com/ascensionphotobooth",
+						{name: "Ascension Photobooth", image: "mirror", pageurl: "https://www.artislandatx.com/ascensionphotobooth",
 							oneliner: "We co-create with our favorite artists to fuse otherworldly design with sharable content and lasting memories.",
 							description: "An ascending photobooth experience resulting in beautiful photos. Branding from the event took shape as a light to expand into with a guided meditation and soundscape. The takeaway was a gratitude mindset, digital portraits, and printed takeaway gifts."},
 
