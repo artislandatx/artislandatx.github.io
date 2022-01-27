@@ -7,16 +7,16 @@
 /* change project image size */
 @keyframes changewidth {
   from {
-    width: 75%;
+    width: 50%;
   }
 
   to {
-    width: 85%;
+    width: 60%;
   }
 }
 
 .project-img {
-  width: 75%;
+  width: 50%;
   padding: 10px;
   -webkit-filter: drop-shadow(0px 0px 10px #ffffff);
   filter: drop-shadow(0px 0px 10px #ffffff);
@@ -37,6 +37,17 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+
+
+
+/* Hide scrollbar for IE, Edge and Firefox, prevent page jumping on scrollbar appearance during grow animation */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+display: none;
 }
 
 .container {
@@ -70,7 +81,8 @@ h1, h2, h3, h4, h5, h6 {
   background: black;
   color: white;
 	display: flex;
-	justify-content:space-evenly;
+	/* justify-content:space-evenly; */
+	justify-content: right;
 	flex-wrap: wrap;
 	padding: 1vh;
 	margin: -10px;
@@ -95,7 +107,13 @@ h1, h2, h3, h4, h5, h6 {
 /* shrinks an img down into a container */
 .shrunk-img {
 	min-width: 0;
-	max-width: 90%;
+	max-width: 61%;
+	height: auto;
+}
+
+.half-shrunk-img {
+	min-width: 0;
+	max-width: 30%;
 	height: auto;
 }
 
@@ -144,7 +162,9 @@ h1, h2, h3, h4, h5, h6 {
 .popup {
   padding: 10px;
   margin: 10px;
-	margin-top: -5%;
+	/* position popups to side of icon */
+	margin-top: -15%;
+	margin-right: -15vw;
   background-color: rgba(0, 0, 0, .6);
   visibility: hidden;
   max-width: 400px;
@@ -164,7 +184,7 @@ h1, h2, h3, h4, h5, h6 {
   .popup {
     visibility: visible;
     position: relative;
-		margin-top: 0;
+		margin: 10px;
   }
 	/* used for offset cols in mobile view */
 	.top-margin {
@@ -184,10 +204,16 @@ h1, h2, h3, h4, h5, h6 {
 <body>
 	<div id="app" class="">
 		<div class="header" >
-			<a href="https://www.artislandatx.com">
+			<!-- <a href="https://www.artislandatx.com">
 				<img style="height:7vh;" src="images/artisland_logo_horizontal-white.webp">
-			</a>
+			</a> -->
 			<div style="">
+			 <a href="https://www.artislandatx.com"><img src="icons/ic_ai_logo.png" style="width:30px;"></a>
+
+
+				<a href="https://www.instagram.com/artislandatx/" ><img src="icons/ic_ai_ig.png" style="width:30px;"></a>
+
+
 				<!-- Add font awesome icons -->
 				<!-- <a href="https://www.instagram.com/artislandatx/" class="fa fa-instagram social fa-fw"></a>
 				<a href="https://tiktok.com/@artislandATX" class="fab fa-tiktok social fa-fw"></a>
@@ -200,9 +226,12 @@ h1, h2, h3, h4, h5, h6 {
 		<div class="center" style="padding:1vw">
 			<div class="" v-if="projectView" style="background: rgba(60, 60, 60, 0.4); padding:7vw; padding-top:1vw;">
 				<div class="grid">
+					<!-- <div>
+						<img :src="'icons/'+selectedProject.image+'@2x.png'" style="width:70%" class="shrunk-img">
+					</div> -->
 					<div class="stack" style="padding:1vw">
 						<!-- style: let image shrink below its max size on mobile view -->
-						<img :src="'icons/'+selectedProject.image+'.png'" class="shrunk-img">
+						<img :src="'icons/'+selectedProject.image+'.png'" style="	" class="shrunk-img">
 						<br>
 						<div style="max-width: 100ch;">
 							<h1>{{selectedProject.name}}</h1>
@@ -214,18 +243,24 @@ h1, h2, h3, h4, h5, h6 {
 						</div>
 					</div>
 					<div>
+						<img :src="'images/'+selectedProject.image+'1.jpg'" class="shrunk-img">
+						<div class="">
+							<img :src="'images/'+selectedProject.image+'2.jpg'" class="half-shrunk-img">
+							<img :src="'images/'+selectedProject.image+'3.jpg'" class="half-shrunk-img">
+						</div>
 					</div>
+
 				</div>
 			</div>
 			<div v-else class="center">
 				<img style="max-height: 15vh" src="images/AIplayground.png">
 				<div class="container" v-for="projectSet in allProjects">
-					<div @click="showProject(project)" v-for="project in projectSet" class="center stack project">
+					<div @click="showProject(project)" v-for="project in projectSet" class="center stack project" style="justify-content: center;">
 						<!-- the reactive class used for offset mobile view, could be removed -->
-						<img :class="project.class" class="project-img" :src="'icons/'+project.image+'_hover.png'">
+						<img :class="project.class" class="project-img" :src="'icons/'+project.image+'@2x.png'">
 						<div class="popup">
 							<h2 style="">{{project.name}}</h2>
-							<h4 style="">{{project.oneliner}}</h4>
+							<h5 style="">{{project.oneliner}}</h5>
 							<button class="ai-button">Learn More</button>
 							<!-- <h5 style="font-style: italic; color:rgba(39, 180, 137, 1);">Click to learn more</h5> -->
 						</div>
